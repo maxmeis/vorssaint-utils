@@ -18,6 +18,11 @@ struct SuperKeyStrings {
     let activeNow: String
     let panelCaption: String
     let manageButton: String
+    let modeSection: String
+    let modeCaption: String
+    let modeSuperKey: String
+    let modeMeh: String
+    let panelCaptionMeh: String
 }
 
 extension FeatureStrings {
@@ -45,7 +50,7 @@ extension SuperKeyStrings {
         pageTitle: "Super key",
         hubDescription: "Holds Shift, Control, Option and Command while you hold Caps Lock.",
         enableToggle: "Use Caps Lock as the super key",
-        enableCaption: "Hold it and press any key. The four modifier keys go along, so your shortcuts stay out of every other app's way.",
+        enableCaption: "Hold it and press any key. The modifier keys go along, so your shortcuts stay out of every other app's way.",
         capsLockKey: "Caps Lock",
         holdHint: "Hold",
         soloSection: "A tap on its own",
@@ -55,14 +60,19 @@ extension SuperKeyStrings {
         soloEscape: "Press Escape",
         activeNow: "Working now",
         panelCaption: "Caps Lock holds Shift, Control, Option and Command.",
-        manageButton: "Set up…"
+        manageButton: "Set up…",
+        modeSection: "Modifiers",
+        modeCaption: "Which keys ride along while you hold it.",
+        modeSuperKey: "Super key",
+        modeMeh: "Meh key",
+        panelCaptionMeh: "Caps Lock holds Control, Option and Command."
     )
 
     static let ptBR = SuperKeyStrings(
         pageTitle: "Tecla super",
         hubDescription: "Segura Shift, Control, Option e Command enquanto você segura o Caps Lock.",
         enableToggle: "Usar o Caps Lock como tecla super",
-        enableCaption: "Segure e aperte qualquer tecla. Os quatro modificadores vão junto, então seus atalhos não esbarram em nenhum app.",
+        enableCaption: "Segure e aperte qualquer tecla. Os modificadores vão junto, então seus atalhos não esbarram em nenhum app.",
         capsLockKey: "Caps Lock",
         holdHint: "Segure",
         soloSection: "Um toque sozinho",
@@ -72,14 +82,19 @@ extension SuperKeyStrings {
         soloEscape: "Aperta Escape",
         activeNow: "Funcionando agora",
         panelCaption: "O Caps Lock segura Shift, Control, Option e Command.",
-        manageButton: "Configurar…"
+        manageButton: "Configurar…",
+        modeSection: "Modificadores",
+        modeCaption: "Quais teclas vão junto enquanto você a segura.",
+        modeSuperKey: "Tecla super",
+        modeMeh: "Tecla meh",
+        panelCaptionMeh: "O Caps Lock segura Control, Option e Command."
     )
 
     static let tr = SuperKeyStrings(
         pageTitle: "Süper tuş",
         hubDescription: "Caps Lock tuşunu basılı tuttuğunuz sürece Shift, Control, Option ve Command basılı kalır.",
         enableToggle: "Caps Lock süper tuş olsun",
-        enableCaption: "Basılı tutun ve herhangi bir tuşa basın. Dört değiştirici tuş da gider, böylece kısayollarınız başka uygulamalarla çakışmaz.",
+        enableCaption: "Basılı tutun ve herhangi bir tuşa basın. Değiştirici tuşlar da gider, böylece kısayollarınız başka uygulamalarla çakışmaz.",
         capsLockKey: "Caps Lock",
         holdHint: "Basılı tutun",
         soloSection: "Tek başına dokunuş",
@@ -89,14 +104,19 @@ extension SuperKeyStrings {
         soloEscape: "Escape tuşuna basar",
         activeNow: "Şu anda çalışıyor",
         panelCaption: "Caps Lock, Shift, Control, Option ve Command tuşlarını basılı tutar.",
-        manageButton: "Ayarla…"
+        manageButton: "Ayarla…",
+        modeSection: "Değiştiriciler",
+        modeCaption: "Basılı tutarken hangi tuşların da basılı kalacağı.",
+        modeSuperKey: "Süper tuş",
+        modeMeh: "Meh tuşu",
+        panelCaptionMeh: "Caps Lock, Control, Option ve Command tuşlarını basılı tutar."
     )
 
     static let ru = SuperKeyStrings(
         pageTitle: "Суперклавиша",
         hubDescription: "Удерживает Shift, Control, Option и Command, пока вы держите Caps Lock.",
         enableToggle: "Использовать Caps Lock как суперклавишу",
-        enableCaption: "Удерживайте её и нажмите любую клавишу. Все четыре модификатора идут вместе, поэтому ваши сочетания не спорят с другими приложениями.",
+        enableCaption: "Удерживайте её и нажмите любую клавишу. Модификаторы идут вместе, поэтому ваши сочетания не спорят с другими приложениями.",
         capsLockKey: "Caps Lock",
         holdHint: "Удерживайте",
         soloSection: "Одиночное нажатие",
@@ -106,14 +126,19 @@ extension SuperKeyStrings {
         soloEscape: "Нажимает Escape",
         activeNow: "Работает",
         panelCaption: "Caps Lock удерживает Shift, Control, Option и Command.",
-        manageButton: "Настроить…"
+        manageButton: "Настроить…",
+        modeSection: "Модификаторы",
+        modeCaption: "Какие клавиши удерживаются вместе с ней.",
+        modeSuperKey: "Суперклавиша",
+        modeMeh: "Клавиша Meh",
+        panelCaptionMeh: "Caps Lock удерживает Control, Option и Command."
     )
 
     static let es = SuperKeyStrings(
         pageTitle: "Tecla súper",
         hubDescription: "Mantiene Shift, Control, Option y Command mientras mantienes Bloq Mayús.",
         enableToggle: "Usar Bloq Mayús como tecla súper",
-        enableCaption: "Mantenla pulsada y pulsa cualquier tecla. Los cuatro modificadores van juntos, así tus atajos no chocan con los de ninguna app.",
+        enableCaption: "Mantenla pulsada y pulsa cualquier tecla. Los modificadores van juntos, así tus atajos no chocan con los de ninguna app.",
         capsLockKey: "Bloq Mayús",
         holdHint: "Mantén",
         soloSection: "Un toque suelto",
@@ -123,14 +148,19 @@ extension SuperKeyStrings {
         soloEscape: "Pulsa Escape",
         activeNow: "Funcionando ahora",
         panelCaption: "Bloq Mayús mantiene Shift, Control, Option y Command.",
-        manageButton: "Configurar…"
+        manageButton: "Configurar…",
+        modeSection: "Modificadores",
+        modeCaption: "Qué teclas van junto mientras la mantienes pulsada.",
+        modeSuperKey: "Tecla súper",
+        modeMeh: "Tecla meh",
+        panelCaptionMeh: "Bloq Mayús mantiene Control, Option y Command."
     )
 
     static let de = SuperKeyStrings(
         pageTitle: "Supertaste",
         hubDescription: "Hält Shift, Control, Option und Command, solange du die Feststelltaste hältst.",
         enableToggle: "Feststelltaste als Supertaste verwenden",
-        enableCaption: "Halte sie und drücke eine beliebige Taste. Alle vier Sondertasten kommen mit, damit deine Kurzbefehle keiner App in die Quere kommen.",
+        enableCaption: "Halte sie und drücke eine beliebige Taste. Die Sondertasten kommen mit, damit deine Kurzbefehle keiner App in die Quere kommen.",
         capsLockKey: "Feststelltaste",
         holdHint: "Halten",
         soloSection: "Ein einzelner Tastendruck",
@@ -140,14 +170,19 @@ extension SuperKeyStrings {
         soloEscape: "Drückt Escape",
         activeNow: "Läuft gerade",
         panelCaption: "Die Feststelltaste hält Shift, Control, Option und Command.",
-        manageButton: "Einrichten…"
+        manageButton: "Einrichten…",
+        modeSection: "Sondertasten",
+        modeCaption: "Welche Tasten mitgehalten werden, solange du sie hältst.",
+        modeSuperKey: "Supertaste",
+        modeMeh: "Meh-Taste",
+        panelCaptionMeh: "Die Feststelltaste hält Control, Option und Command."
     )
 
     static let fr = SuperKeyStrings(
         pageTitle: "Touche super",
         hubDescription: "Maintient Shift, Control, Option et Command tant que vous maintenez Verr. Maj.",
         enableToggle: "Utiliser Verr. Maj comme touche super",
-        enableCaption: "Maintenez-la et appuyez sur n'importe quelle touche. Les quatre modificateurs suivent, vos raccourcis ne gênent donc aucune app.",
+        enableCaption: "Maintenez-la et appuyez sur n'importe quelle touche. Les modificateurs suivent, vos raccourcis ne gênent donc aucune app.",
         capsLockKey: "Verr. Maj",
         holdHint: "Maintenez",
         soloSection: "Un appui seul",
@@ -157,14 +192,19 @@ extension SuperKeyStrings {
         soloEscape: "Appuie sur Échap",
         activeNow: "Actif maintenant",
         panelCaption: "Verr. Maj maintient Shift, Control, Option et Command.",
-        manageButton: "Configurer…"
+        manageButton: "Configurer…",
+        modeSection: "Modificateurs",
+        modeCaption: "Quelles touches suivent tant que vous la maintenez.",
+        modeSuperKey: "Touche super",
+        modeMeh: "Touche meh",
+        panelCaptionMeh: "Verr. Maj maintient Control, Option et Command."
     )
 
     static let it = SuperKeyStrings(
         pageTitle: "Tasto super",
         hubDescription: "Tiene premuti Shift, Control, Option e Command mentre tieni premuto Blocco Maiuscole.",
         enableToggle: "Usa Blocco Maiuscole come tasto super",
-        enableCaption: "Tienilo premuto e premi un tasto qualsiasi. I quattro modificatori vanno insieme, così le tue scorciatoie non danno fastidio a nessuna app.",
+        enableCaption: "Tienilo premuto e premi un tasto qualsiasi. I modificatori vanno insieme, così le tue scorciatoie non danno fastidio a nessuna app.",
         capsLockKey: "Blocco Maiuscole",
         holdHint: "Tieni premuto",
         soloSection: "Un tocco da solo",
@@ -174,14 +214,19 @@ extension SuperKeyStrings {
         soloEscape: "Preme Escape",
         activeNow: "Attivo ora",
         panelCaption: "Blocco Maiuscole tiene premuti Shift, Control, Option e Command.",
-        manageButton: "Configura…"
+        manageButton: "Configura…",
+        modeSection: "Modificatori",
+        modeCaption: "Quali tasti restano premuti insieme a lui.",
+        modeSuperKey: "Tasto super",
+        modeMeh: "Tasto meh",
+        panelCaptionMeh: "Blocco Maiuscole tiene premuti Control, Option e Command."
     )
 
     static let ja = SuperKeyStrings(
         pageTitle: "スーパーキー",
         hubDescription: "Caps Lock を押している間、Shift、Control、Option、Command を押した状態にします。",
         enableToggle: "Caps Lock をスーパーキーとして使う",
-        enableCaption: "押したまま好きなキーを押してください。4つの修飾キーが一緒に付くので、ほかのアプリのショートカットとぶつかりません。",
+        enableCaption: "押したまま好きなキーを押してください。修飾キーが一緒に付くので、ほかのアプリのショートカットとぶつかりません。",
         capsLockKey: "Caps Lock",
         holdHint: "押したまま",
         soloSection: "単独で押したとき",
@@ -191,14 +236,19 @@ extension SuperKeyStrings {
         soloEscape: "Escape を押す",
         activeNow: "動作中",
         panelCaption: "Caps Lock が Shift、Control、Option、Command を押した状態にします。",
-        manageButton: "設定…"
+        manageButton: "設定…",
+        modeSection: "修飾キー",
+        modeCaption: "押している間、どのキーを一緒に押した状態にするか。",
+        modeSuperKey: "スーパーキー",
+        modeMeh: "Mehキー",
+        panelCaptionMeh: "Caps Lock が Control、Option、Command を押した状態にします。"
     )
 
     static let ko = SuperKeyStrings(
         pageTitle: "슈퍼 키",
         hubDescription: "Caps Lock을 누르고 있는 동안 Shift, Control, Option, Command를 함께 누릅니다.",
         enableToggle: "Caps Lock을 슈퍼 키로 사용",
-        enableCaption: "누른 채로 아무 키나 누르세요. 네 개의 조합 키가 함께 가므로 단축키가 다른 앱과 겹치지 않습니다.",
+        enableCaption: "누른 채로 아무 키나 누르세요. 조합 키가 함께 가므로 단축키가 다른 앱과 겹치지 않습니다.",
         capsLockKey: "Caps Lock",
         holdHint: "누른 채로",
         soloSection: "혼자 눌렀을 때",
@@ -208,14 +258,19 @@ extension SuperKeyStrings {
         soloEscape: "Escape 누르기",
         activeNow: "지금 작동 중",
         panelCaption: "Caps Lock이 Shift, Control, Option, Command를 누른 상태로 만듭니다.",
-        manageButton: "설정…"
+        manageButton: "설정…",
+        modeSection: "조합 키",
+        modeCaption: "누르고 있는 동안 함께 눌릴 키.",
+        modeSuperKey: "슈퍼 키",
+        modeMeh: "Meh 키",
+        panelCaptionMeh: "Caps Lock이 Control, Option, Command를 누른 상태로 만듭니다."
     )
 
     static let zhHans = SuperKeyStrings(
         pageTitle: "超级键",
         hubDescription: "按住大写锁定键时，同时按住 Shift、Control、Option 和 Command。",
         enableToggle: "把大写锁定键当作超级键",
-        enableCaption: "按住它再按任意键，四个修饰键会一起附上，你的快捷键就不会和别的 App 撞车。",
+        enableCaption: "按住它再按任意键，修饰键会一起附上，你的快捷键就不会和别的 App 撞车。",
         capsLockKey: "大写锁定",
         holdHint: "按住",
         soloSection: "单独轻按",
@@ -225,14 +280,19 @@ extension SuperKeyStrings {
         soloEscape: "按下 Escape",
         activeNow: "正在运行",
         panelCaption: "大写锁定键会按住 Shift、Control、Option 和 Command。",
-        manageButton: "设置…"
+        manageButton: "设置…",
+        modeSection: "修饰键",
+        modeCaption: "按住它时会一起附上哪些键。",
+        modeSuperKey: "超级键",
+        modeMeh: "Meh 键",
+        panelCaptionMeh: "大写锁定键会按住 Control、Option 和 Command。"
     )
 
     static let zhTW = SuperKeyStrings(
         pageTitle: "超級鍵",
         hubDescription: "按住大寫鎖定鍵時，同時按住 Shift、Control、Option 和 Command。",
         enableToggle: "把大寫鎖定鍵當作超級鍵",
-        enableCaption: "按住它再按任何鍵，四個修飾鍵會一起附上，你的快速鍵就不會和其他 App 打架。",
+        enableCaption: "按住它再按任何鍵，修飾鍵會一起附上，你的快速鍵就不會和其他 App 打架。",
         capsLockKey: "大寫鎖定",
         holdHint: "按住",
         soloSection: "單獨輕按",
@@ -242,14 +302,19 @@ extension SuperKeyStrings {
         soloEscape: "按下 Escape",
         activeNow: "正在運作",
         panelCaption: "大寫鎖定鍵會按住 Shift、Control、Option 和 Command。",
-        manageButton: "設定…"
+        manageButton: "設定…",
+        modeSection: "修飾鍵",
+        modeCaption: "按住它時會一起附上哪些鍵。",
+        modeSuperKey: "超級鍵",
+        modeMeh: "Meh 鍵",
+        panelCaptionMeh: "大寫鎖定鍵會按住 Control、Option 和 Command。"
     )
 
     static let zhHK = SuperKeyStrings(
         pageTitle: "超級鍵",
         hubDescription: "按住大寫鎖定鍵時，同時按住 Shift、Control、Option 和 Command。",
         enableToggle: "把大寫鎖定鍵當作超級鍵",
-        enableCaption: "按住佢再撳任何鍵，四個修飾鍵會一齊附上，你嘅快速鍵就唔會同其他 App 撞。",
+        enableCaption: "按住佢再撳任何鍵，修飾鍵會一齊附上，你嘅快速鍵就唔會同其他 App 撞。",
         capsLockKey: "大寫鎖定",
         holdHint: "按住",
         soloSection: "單獨輕撳",
@@ -259,6 +324,11 @@ extension SuperKeyStrings {
         soloEscape: "撳 Escape",
         activeNow: "正在運作",
         panelCaption: "大寫鎖定鍵會按住 Shift、Control、Option 和 Command。",
-        manageButton: "設定…"
+        manageButton: "設定…",
+        modeSection: "修飾鍵",
+        modeCaption: "按住佢嘅時候會一齊附上邊啲鍵。",
+        modeSuperKey: "超級鍵",
+        modeMeh: "Meh 鍵",
+        panelCaptionMeh: "大寫鎖定鍵會按住 Control、Option 同 Command。"
     )
 }

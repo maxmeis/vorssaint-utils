@@ -42,6 +42,7 @@ enum DefaultsKey {
     static let mouseButtonShortcuts = "mouseButtonShortcuts" // [button number: GlobalShortcut storage value]
     static let superKeyEnabled = "superKeyEnabled"        // Caps Lock holds the four modifiers (issue #330)
     static let superKeySoloAction = "superKeySoloAction"  // SuperKeySoloAction raw value
+    static let superKeyMode = "superKeyMode"              // SuperKeyMode raw value: super or meh
     // Machine state, never exported: whether the keyboard mapping is in place,
     // so a launch after a crash can take it back out.
     static let superKeyMappingApplied = "superKeyMappingApplied"
@@ -673,6 +674,7 @@ enum Defaults {
         DefaultsKey.mouseButtonShortcuts: [String: String](),
         DefaultsKey.superKeyEnabled: false,
         DefaultsKey.superKeySoloAction: SuperKeySoloAction.none.rawValue,
+        DefaultsKey.superKeyMode: SuperKeyMode.superKey.rawValue,
         DefaultsKey.smoothScrollExceptions: [],
         DefaultsKey.scrollInverterExceptions: [],
         DefaultsKey.mouseNavigationExceptions: [],
