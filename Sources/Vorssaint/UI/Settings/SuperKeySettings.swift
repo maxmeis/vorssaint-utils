@@ -9,7 +9,7 @@ struct SuperKeySettings: View {
     @ObservedObject private var superKey = SuperKeyService.shared
     @AppStorage(DefaultsKey.superKeyEnabled) private var enabled = false
     @AppStorage(DefaultsKey.superKeySoloAction) private var soloActionRaw = SuperKeySoloAction.none.rawValue
-    @AppStorage(DefaultsKey.superKeyMode) private var modeRaw = SuperKeyMode.superKey.rawValue
+    @AppStorage(DefaultsKey.superKeyMode) private var mode = SuperKeyMode.superKey
 
     private var text: SuperKeyStrings { FeatureStrings.superKey(l10n.language) }
 
@@ -35,12 +35,15 @@ struct SuperKeySettings: View {
             }
 
             Section(text.modeSection) {
-                Picker(text.modeSection, selection: modeBinding) {
+                Picker(text.modeSection, selection: $mode) {
                     Text(text.modeSuperKey).tag(SuperKeyMode.superKey)
                     Text(text.modeMeh).tag(SuperKeyMode.meh)
                 }
                 .labelsHidden()
                 .pickerStyle(.radioGroup)
+                .onChange(of: mode) { _, _ in
+                    SuperKeyService.shared.syncWithPreferences()
+                }
                 Text(text.modeCaption)
                     .font(.caption)
                     .foregroundStyle(.secondary)
@@ -100,8 +103,6 @@ struct SuperKeySettings: View {
         .accessibilityLabel(mode == .meh ? text.panelCaptionMeh : text.panelCaption)
     }
 
-    private var mode: SuperKeyMode { SuperKeyMode.sanitized(modeRaw) }
-
     private var modeGlyphs: [String] {
         mode == .meh ? ["⌃", "⌥", "⌘"] : ["⇧", "⌃", "⌥", "⌘"]
     }
@@ -131,15 +132,6 @@ struct SuperKeySettings: View {
             SuperKeySoloAction.sanitized(soloActionRaw)
         } set: { action in
             soloActionRaw = action.rawValue
-            SuperKeyService.shared.syncWithPreferences()
-        }
-    }
-
-    private var modeBinding: Binding<SuperKeyMode> {
-        Binding {
-            mode
-        } set: { newMode in
-            modeRaw = newMode.rawValue
             SuperKeyService.shared.syncWithPreferences()
         }
     }

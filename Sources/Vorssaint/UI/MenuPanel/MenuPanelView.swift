@@ -1046,7 +1046,7 @@ struct QuickControlsSection: View {
     @AppStorage(DefaultsKey.radialMenuEnabled) private var radialMenuEnabled = false
     @AppStorage(DefaultsKey.mouseButtonShortcutsEnabled) private var mouseButtonShortcutsEnabled = false
     @AppStorage(DefaultsKey.superKeyEnabled) private var superKeyEnabled = false
-    @AppStorage(DefaultsKey.superKeyMode) private var superKeyModeRaw = SuperKeyMode.superKey.rawValue
+    @AppStorage(DefaultsKey.superKeyMode) private var superKeyMode = SuperKeyMode.superKey
     @AppStorage(DefaultsKey.panelControlMouseScroll) private var showScroll = true
     @AppStorage(DefaultsKey.panelControlMouseNavigation) private var showMouseNavigation = true
     @AppStorage(DefaultsKey.panelControlSwitcher) private var showSwitcher = true
@@ -1561,7 +1561,7 @@ struct QuickControlsSection: View {
                 }
         case .superKey:
             let superKeyStrings = FeatureStrings.superKey(l10n.language)
-            let superKeyPanelCaption = SuperKeyMode.sanitized(superKeyModeRaw) == .meh
+            let superKeyPanelCaption = superKeyMode == .meh
                 ? superKeyStrings.panelCaptionMeh : superKeyStrings.panelCaption
             PanelToggleRow(title: superKeyStrings.pageTitle,
                            caption: caption(superKeyPanelCaption,
