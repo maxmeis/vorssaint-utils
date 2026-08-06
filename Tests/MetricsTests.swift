@@ -7679,7 +7679,7 @@ struct MetricsTests {
                    "every Settings category name is set for \(language.rawValue)")
             let superKeyValues = Mirror(reflecting: FeatureStrings.superKey(language)).children
                 .compactMap { $0.value as? String }
-            expect(superKeyValues.count == 14 && superKeyValues.allSatisfy { !$0.isEmpty },
+            expect(superKeyValues.count == 19 && superKeyValues.allSatisfy { !$0.isEmpty },
                    "every super key string is set for \(language.rawValue)")
             expect(superKeyValues.allSatisfy { !$0.contains("—") },
                    "no em-dash in visible super key strings (\(language.rawValue))")
@@ -9723,14 +9723,18 @@ struct MetricsTests {
         expect(Defaults.registeredDefaults[DefaultsKey.superKeySoloAction] as? String
                 == SuperKeySoloAction.none.rawValue,
                "a tap on its own does nothing until the user picks something")
+        expect(Defaults.registeredDefaults[DefaultsKey.superKeyMode] as? String
+                == SuperKeyMode.superKey.rawValue,
+               "it holds all four modifiers, Shift included, until the user picks Meh")
         expect(Defaults.registeredDefaults[DefaultsKey.panelControlSuperKey] as? Bool == true,
                "the super key panel row ships visible like its siblings")
         expect(Defaults.registeredDefaults[DefaultsKey.superKeyMappingApplied] == nil,
                "the mapping flag is machine state, so it is never registered and never backed up")
         expect(!SettingsBackupSupport.exportKeys().contains(DefaultsKey.superKeyMappingApplied)
                 && SettingsBackupSupport.exportKeys().contains(DefaultsKey.superKeyEnabled)
-                && SettingsBackupSupport.exportKeys().contains(DefaultsKey.superKeySoloAction),
-               "the switch and the solo action travel in a backup, the mapping state stays behind")
+                && SettingsBackupSupport.exportKeys().contains(DefaultsKey.superKeySoloAction)
+                && SettingsBackupSupport.exportKeys().contains(DefaultsKey.superKeyMode),
+               "the switch, the solo action and the mode travel in a backup, the mapping state stays behind")
         expect(AppFeature.superKey.enabledKeys == [DefaultsKey.superKeyEnabled]
                 && AppFeature.superKey.permissions == [.accessibility]
                 && AppFeature.superKey.group == .mouseKeyboard
@@ -9744,6 +9748,15 @@ struct MetricsTests {
                 && SuperKeySoloAction.sanitized("nonsense") == SuperKeySoloAction.none
                 && SuperKeySoloAction.sanitized(nil) == SuperKeySoloAction.none,
                "a stored solo action is trusted only when the app still knows it")
+        expect(SuperKeyMode.sanitized("meh") == .meh
+                && SuperKeyMode.sanitized("superKey") == .superKey
+                && SuperKeyMode.sanitized("nonsense") == .superKey
+                && SuperKeyMode.sanitized(nil) == .superKey,
+               "a stored mode is trusted only when the app still knows it, and falls back to Super")
+        expect(SuperKeyMode.superKey.flags == [.maskShift, .maskControl, .maskAlternate, .maskCommand],
+               "the super key holds all four modifiers, Shift included")
+        expect(SuperKeyMode.meh.flags == [.maskControl, .maskAlternate, .maskCommand],
+               "the meh key holds the same three modifiers, with Shift left out")
 
         let capsMapping = SuperKeyMapping(source: SuperKeySupport.capsLockUsage,
                                           destination: SuperKeySupport.triggerUsage)

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Copyright (C) 2026 Vorssaint
 
+import CoreGraphics
 import Foundation
 
 /// What a tap of the super key on its own does, when no other key was pressed
@@ -13,6 +14,28 @@ enum SuperKeySoloAction: String, CaseIterable, Identifiable {
     static func sanitized(_ raw: String?) -> SuperKeySoloAction {
         guard let raw, let action = SuperKeySoloAction(rawValue: raw) else { return .none }
         return action
+    }
+}
+
+/// Which modifiers Caps Lock holds down. Super holds all four; Meh leaves
+/// Shift out, for shortcuts that want to keep using it on its own.
+enum SuperKeyMode: String, CaseIterable, Identifiable {
+    case superKey, meh
+
+    var id: String { rawValue }
+
+    static func sanitized(_ raw: String?) -> SuperKeyMode {
+        guard let raw, let mode = SuperKeyMode(rawValue: raw) else { return .superKey }
+        return mode
+    }
+
+    /// The modifiers that ride along with the mode: all four for Super, Shift
+    /// left out for Meh.
+    var flags: CGEventFlags {
+        switch self {
+        case .superKey: return [.maskShift, .maskControl, .maskAlternate, .maskCommand]
+        case .meh: return [.maskControl, .maskAlternate, .maskCommand]
+        }
     }
 }
 

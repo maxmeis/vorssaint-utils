@@ -9,6 +9,7 @@ struct SuperKeySettings: View {
     @ObservedObject private var superKey = SuperKeyService.shared
     @AppStorage(DefaultsKey.superKeyEnabled) private var enabled = false
     @AppStorage(DefaultsKey.superKeySoloAction) private var soloActionRaw = SuperKeySoloAction.none.rawValue
+    @AppStorage(DefaultsKey.superKeyMode) private var modeRaw = SuperKeyMode.superKey.rawValue
 
     private var text: SuperKeyStrings { FeatureStrings.superKey(l10n.language) }
 
@@ -32,6 +33,19 @@ struct SuperKeySettings: View {
                         .foregroundStyle(.green)
                 }
             }
+
+            Section(text.modeSection) {
+                Picker(text.modeSection, selection: modeBinding) {
+                    Text(text.modeSuperKey).tag(SuperKeyMode.superKey)
+                    Text(text.modeMeh).tag(SuperKeyMode.meh)
+                }
+                .labelsHidden()
+                .pickerStyle(.radioGroup)
+                Text(text.modeCaption)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            .disabled(!enabled)
 
             Section(text.soloSection) {
                 Picker(text.soloSection, selection: soloBinding) {
@@ -72,7 +86,7 @@ struct SuperKeySettings: View {
                 .foregroundStyle(.tertiary)
                 .padding(.bottom, 14)
             HStack(spacing: 5) {
-                ForEach(["⇧", "⌃", "⌥", "⌘"], id: \.self) { glyph in
+                ForEach(modeGlyphs, id: \.self) { glyph in
                     keyCap(glyph, symbol: nil, wide: false)
                 }
             }
@@ -83,7 +97,13 @@ struct SuperKeySettings: View {
         .frame(maxWidth: .infinity, alignment: .center)
         .padding(.vertical, 4)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel(text.panelCaption)
+        .accessibilityLabel(mode == .meh ? text.panelCaptionMeh : text.panelCaption)
+    }
+
+    private var mode: SuperKeyMode { SuperKeyMode.sanitized(modeRaw) }
+
+    private var modeGlyphs: [String] {
+        mode == .meh ? ["⌃", "⌥", "⌘"] : ["⇧", "⌃", "⌥", "⌘"]
     }
 
     private func keyCap(_ title: String, symbol: String?, wide: Bool) -> some View {
@@ -111,6 +131,15 @@ struct SuperKeySettings: View {
             SuperKeySoloAction.sanitized(soloActionRaw)
         } set: { action in
             soloActionRaw = action.rawValue
+            SuperKeyService.shared.syncWithPreferences()
+        }
+    }
+
+    private var modeBinding: Binding<SuperKeyMode> {
+        Binding {
+            mode
+        } set: { newMode in
+            modeRaw = newMode.rawValue
             SuperKeyService.shared.syncWithPreferences()
         }
     }
